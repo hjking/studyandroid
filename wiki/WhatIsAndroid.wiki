@@ -1,0 +1,57 @@
+#summary One-sentence summary of this page.
+#labels Featured,Phase-Requirements,Phase-Design
+= *Android是什么？* =
+Android是包括一个操作系统，中间件和关键应用的移动设备的一个软件堆。 快速浏览
+Android SDK,提供必要的基于Android平台的，使用Java程序语言开发应用程序的工具和APIs。
+
+= *特性* =
+   * 应用程序框架允许重复使用和替换组件。
+   * *Dalvik 虚拟机* 为移动设备优化
+   * *综合的浏览器* 基于开源的 [http://webkit.org WebKit]引擎
+   * *优化的图像* 由2D图像库支持; 3D 图形基于OpenGL ES 1.0 (可选择硬件加速)
+   * *SQLite* 提供结构化的数据存储
+   * *多媒体支持* 常见的 声频，录像和图像格式(MPEG4, H.264, MP3, AAC, AMR, JPG, PNG, GIF)
+   * *GSM 电话* (依赖于硬件)
+   * *蓝牙, EDGE, 3G, and WiFi*(无线保真) (依赖于硬件)
+   * *照像机，GPS，指南针和加速器* (依赖于硬件)
+   * *丰富的开发环境* 包括模拟器设备，调试工具，内存和显示轮廓, Eclipse集成开发环境的一个插件。
+
+= *Android 构架* =
+   以下图形显示了Android操作系统的主要部件。每个部分将在下面详细描述。
+http://www.androidin.com/docs/images/system-architecture.jpg
+
+= *应用程序* =
+Android将装载一系列的核心应用程序，包括电子邮件客户端，SMS程序，日历，地图，浏览器，联系簿，等等。所有的应用程序都用Java编程语言编写。
+
+= *应用程序框架* =
+开发者可以完全访问APIs，因为核心应用使用相同的应用程序框架。应用程序框架是为简单的组件重用而设计的，任何应用程序都可以发布自己的功能，任何其它的应用程序可能利用这些功能(以被框架实施的安全约束为条件)。相同的机制允许用户替换组件。
+
+全部应用的基础是一套服务和系统，包括： 
+    *  可用来构建应用程序的一系列丰富的可扩展的 [http://www.androidin.com/docs/reference/view-gallery.html Views] (视图组件)，包括 lists(列表), grids(栅格), text boxes(文本框), buttons(按钮), 甚至一个嵌入式的Web浏览器。
+    * [http://www.androidin.com/docs/devel/data/contentproviders.html 内容提供者] 允许应用程序访问其它应用程序的数据，(例如联系簿)，或者共享它们自己的数据。
+    * [http://www.androidin.com/docs/devel/resources-i18n.html 资源管理工具] 提供访问非代码的资源，例如本地文本，图像和布局文件。
+    * [http://www.androidin.com/docs/reference/android/app/NotificationManager.html 通知管理工具] 允许所以的应用程序显示状态栏中的常用提示。
+    * [http://www.androidin.com/docs/reference/android/app/NotificationManager.html Activity管理工具] 管理应用程序的生命周期，以及提供普通导航和后退。
+欲了解更多的细节和应用的过程，参见[http://www.androidin.com/docs/intro/tutorial.html 编写一个Android应用程序]。
+= *库* =
+Android包括一系列的Android系统中多种组件用到的C/C++库。这些功能通过Android应用框架与开发者接触。 以下列举的是一些核心库：
+    * *系统C库* - BSD 得到的标准C系统库(libc)，为嵌入的基于Linux的设备调试
+    * *多媒体库* - 基于PacketVideo的OpenCORE； 该库支持回放和很多流行的音频与视频形式的记录， 以及静态图象文件，包括MPEG4，H. 264，MP3，AAC，AMR，JPG 和PNG
+    * *界面管理工具*- 管理访问与显示子系统和从多应用无缝的集成2D 和3D图像的图表层。
+    * *LibWebCore(Web核心库)* - 一个现代的Web浏览器，它提供Android浏览器和嵌入式的Web显示。
+    * *SGL* - 基础2D图像引擎。
+    * *3D库*- 基于OpenGL ES 1.0 APIs的工具； 这些库或者使用(可提供的话)3D 硬件加速或者使用内置的高度优化的rasterizer软件3D 。
+    * *FreeType*(免费类型) - 位图和矢量字体提供。
+    * *SQLite* - 一个可被所有应用程序使用的强大的轻量级的关系型数据库引擎。
+
+= *Android 运行环境* =
+
+Android包括一套核心库，它们提供大部分Java编程语言中的可用到的功能性的核心库。
+
+每一个Android应用程序都运行在它自己的进程里，带着它自己的Dalvik虚拟机实例。Dalvik已经被编写出来，因此一个设备可以高效的运行多个虚拟机。Dalvik虚拟机在Dalvik可执行格式(.dex)中执行文件，它是经过优化的，以至于可以用最小的内存。这种虚拟机是基于登记的，利用内置的"dx" 工具将文件转化成.dex格式，然后经过Java语言编译器编译成类，最后运行该类。
+
+Dalvik虚拟机依靠底层的Linux内核功能，如：进程和低级的内存管理。
+
+= *Linux 内核* =
+
+Android依赖Linux 版本2.6作为其核心系统服务例如安全，内存管理，进程管理，网络堆，和驱动模式。 内核也作为在硬件和其余软件堆之间的一个抽象观念层。
