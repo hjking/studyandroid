@@ -1,0 +1,1 @@
+Construct a simple notes list that lets the user add new notes but not edit them. Demonstrates the basics of ListActivities and creating and handling menu options. Uses a SQLite database to store the notes.
